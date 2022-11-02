@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test16.html</title>
+  <script>
+    'use strict';    
+    let res = 0;
+
+    function input(su){
+      res = res + su;
+      demo.innerText = res;
+    }
+
+
+
+  </script>
+  <style>
+    .btn{
+      width:  30px;
+      height: 30px;
+      background-color: #6bb6b0;
+      border: 1px solid gray;
+      padding: 5px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h2>계산기</h2>
+  <div id="container">
+
+    <p><button type="button" onclick="input(1)" class="btn">1</button></p>
+    <p><button type="button" onclick="input(2)" class="btn">2</button></p>
+    <p><button type="button" onclick="input(3)" class="btn">3</button></p>
+  </div>
+  <div id="demo"></div>
+</body>
+</html>
