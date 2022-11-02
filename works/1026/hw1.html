@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <title>회원가입</title>
+  </head>
+  <body>
+    <p align ="center"><a href="https://music.bugs.co.kr/"><img src="../../img/bugs.png" width="100px"/><a></p>
+    <h2 align="center">Bugs 회원가입</h2>
+    <form name="myform" method="post" action="#">
+      <table border ="1px"  cellpadding="10px" cellspacing="0px" width="800" align ="center">
+        <tr>
+          <td>
+            <label for="email">이메일</label>
+          </td>
+          <td>
+            <input type="email" name"email" size="10" /> @ 
+              <select name="email.com">
+              <option selected>도메인 선택</option>
+              <option value="naver.com">naver.com</option>
+              <option value="anmail.net">hanmail.net</option>
+              <option value="daum.net">daum.net</option>
+              <option value="nate.net">nate.net</option>
+              <option value="gmail.com">gmail.com</option>
+              </select>
+          </td>
+        </tr>
+        <!-- 1행 -->
+        <tr>
+          <td rowspan="2">
+            <label for="pwd">비밀번호</label>
+          </td>
+          <td>
+          <input type="password" name="pwd" id="pwd" placeholder="비밀번호입력"/>
+          </td>
+        </tr>  
+        <!-- 2행 -->
+        <tr>
+          <td>
+          <input type="password" name="pwd2" id="pwd" placeholder="비밀번호 다시입력"/>
+          <br/>
+          <meter value=95 min="0" max="100"></meter>
+          <b>안전합니다!</b>
+          </td>
+        </tr>  
+        <!-- 3행 -->
+        <tr>
+          <td>
+            <label for="name">이름</label>
+          </td>
+          <td>
+          <input type="text" name="name" id="name">
+          </td>
+        </tr>  
+        <!-- 4행 -->
+        <tr>
+          <td>
+            <label for="birthday">생년월일</label>
+          </td>
+          <td>
+            <input type="date" name="birthday" id="birthday"/><br/>
+          </td>
+        </tr>  
+        <!-- 5행 -->
+        <tr>
+          <td>
+            <label for="gender">성별<label>
+          </td>
+          <td>
+            <p>
+              <input type="radio" name="gender" id="gender1" value="male"/ checked/> 남자
+              <input type="radio" name="gender" id="gender2" value="female"/> 여자
+              <input type="radio" name="gender" id="gender3" value="null"/> 미공개              
+            </p>
+          </td>
+        </tr>  
+        <!-- 6행 -->
+        <tr>
+          <td>
+            <label for="profil">프로필 사진</label>
+          </td>
+          <td>
+            <input type="file" name="profil" id="profill"/>
+          </td>          
+        </tr>  
+        <!-- 7행 -->
+        <tr>
+          <td>
+            <label for="vol">선호하는 볼륨</label>
+          </td>
+          <td>
+              <p>
+                <audio src="../../img/Everything.mp3" loop controls></audio></br>
+                <input type="range" name="vol" value="30" min="0" max="100" />
+              </p>
+          </td>          
+        </tr>  
+        <!-- 8행 -->
+        <tr>
+          <td>
+            <label for="genre">즐겨듣는 음악장르</label>
+          </td>
+          <td>
+            <p>
+              <input type="checkbox" name="genre" id="genre1" value="클래식"/>클래식
+              <input type="checkbox" name="genre" id="genre2" value="재즈"/>재즈
+              <input type="checkbox" name="genre" id="genre3" value="팝"/>팝
+              <input type="checkbox" name="genre" id="genre4" value="발라드"/>발라드
+              <input type="checkbox" name="genre" id="genre5" value="힙합"/>힙합
+              <input type="checkbox" name="genre" id="genre6" value="록"/>록
+           </p>
+          </td>          
+        </tr>  
+        <!-- 9행 -->
+        <tr>
+        <td colspan="2" align="center">
+          <!-- <input type="submit" value="전송"/> -->
+          <input type="reset" value="다시입력"/>
+          <input type="button" value="회원가입"/>
+        </td>      
+        </tr>  
+        <!-- 10행 -->
+      </table>
+    </form>
+  </body>
+</html>
