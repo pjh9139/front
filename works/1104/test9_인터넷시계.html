@@ -33,7 +33,6 @@
     }
 
     function clockStart(){
-      clock();
       statusTime = setInterval(clock, 1000);
     }
 
@@ -43,7 +42,7 @@
   
   </script>
 </head>
-<body>
+<body onload="clockStart()">
   <p><br/></p>
   <div class="container">
     <h2></h2>

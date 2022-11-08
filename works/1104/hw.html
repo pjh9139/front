@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숫자 맞추기숙제</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict'
+    let su1 ;
+    let su2 ;
+    let random = "1";
+    let res = "2" ;
+    
+    function start(){
+      su1 = parseInt(document.getElementById("su1").value);
+      su2 = parseInt(document.getElementById("su2").value);
+      
+      if(su1>=su2){
+        alert("최소 최대값을 정확히 적어주세요")
+        return false;
+      }
+      random = rand(su1,su2);
+      res = rand(su1,su2);
+      
+      demo1.innerHTML = "랜덤값 : " + random;
+      demo2.innerHTML = "당신의값 : " + res;
+      p.innerHTML =     "<p>방향키 위아래키로 숫자를 맞춰보세요~</p><p>↑는 +1 <br/>↓는 -1 입니다~</p>"
+    }
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function keyboardEvent(e){
+      let str = "발생된 이벤트 : " +e.type + "<br/>";
+      if(e.which==38){
+        res += +1;
+        demo2.innerHTML = "당신의 값 : " + res;
+      }
+      if(e.which==40){
+        res += -1;
+        demo2.innerHTML = "당신의 값 : " + res;
+      }
+      if(random==res){
+        demo1.innerHTML = "게임성공!!!"
+      }
+    }
+    
+    document.onkeypress = keyboardEvent;
+    document.onkeydown = keyboardEvent;
+  </script>
+</head>
+<body>
+  <p><br/></p>
+  <div class="container">
+    <h2>숫자 맞추기</h2>
+    <p id = p>원하는 숫자의 범위를 입력해보세요~</p>
+    <form name="myform">
+      <div>
+        최소값
+        <input type="number" name="su1" id="su1"/>
+        최대값
+        <input type="number" name="su2" id="su2"/>
+      </div>
+      <div id="demo1">
+        랜덤값 : 
+      </div>
+      <div id="demo2">
+        당신의 값 :
+      </div>
+      <p><input type="button" value="시작하기" onclick="start()" class="btn btn-primary"/></p>
+      <p><input type="button" value="다시하기" onclick="location.reload();" class="btn btn-success"/></p>
+      <hr/>
+    </form>
+    <hr/>
+  </div>
+  <p><br/></p>
+</body>
+</html>
