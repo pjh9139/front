@@ -16,8 +16,11 @@
   <script>
     'use strict';
     let addTbl
+    let cnt = 1;
+    let Total = 0;
 
     function insRow(){
+      cnt++;
       addTbl = document.getElementById("addTable");
       let addRow = addTbl.insertRow(); // addTbl테이블의 행의 개념으로 한개를 추가.... 의 의미
       addRow.onmouseover = function(){  // clickedRowIndex : 클릭한 row의 위치를 반환(확인)
@@ -27,9 +30,9 @@
       
       //앞에서 삽입시켜놓은 셀에 추가될 테이블의 내용을 기록해준다.
       let formTag = "";
-      formTag +=  '단가:<input type="text" name="addText1" style="width:60px; height:20px; "/>';
-      formTag +=  '수량:<input type="text" name="addText2" style="width:60px; height:20px; " onblur="formCalc();"/>';
-      formTag +=  '금액:<input type="text" name="result" readonly style="width:60px; height:20px;"/>';
+      formTag +=  '단가:<input type="text" id="Price'+cnt+'" name="Price" style="width:60px; height:20px; "/>';
+      formTag +=  '수량:<input type="text" id="Number'+cnt+'" name="Number" style="width:60px; height:20px; "/>';
+      formTag +=  '금액:<input type="text" id="Res'+cnt+'" name="Total" readonly style="width:60px; height:20px;"/>';
       formTag +=  '<input type = "button" value="삭제" onclick="removeRow()"/>';
 
       addCell.innerHTML = formTag;
@@ -39,6 +42,37 @@
     function removeRow() {
       addTable.deleteRow(addTbl.clickRowIndex);
     }
+
+    // 가격 넣기
+    function fChcek(){
+
+      for(let i=1;i<=cnt;i++){
+        if(document.getElementById("Price"+i).value==""){
+          alert("단가를 입력해주세요");
+          return false;
+        }else if(document.getElementById("Number"+i).value==""){
+          alert("수량을 입력해주세요");
+          return false;
+        }
+
+        let Price = document.getElementById("Price"+i).value;
+        let Number = document.getElementById("Number"+i).value;
+        let Res = Price*Number;
+        Total += Res;
+        console.log(Total);
+        document.getElementById("Res"+i).value = Res;
+      }
+      document.getElementById("Total").value = Total;
+    }
+    function Reenter(){
+      for(let i=1;i<=cnt;i++){
+        document.getElementById("Price"+i).value = "";
+        document.getElementById("Number"+i).value = "";
+        document.getElementById("Res"+i).value = "";
+        Total = 0;
+      }
+    }
+
   </script>
 </head>
 <body>
@@ -56,9 +90,9 @@
           <table id="addTable" width="400px">
             <tr>
               <td>
-                단가:<input type="text" name="addText1" style="width:60px; height:20px; "/>
-                수량:<input type="text" name="addText2" style="width:60px; height:20px; " onblur="formCalc();"/>
-                금액:<input type="text" name="result" readonly style="width:60px; height:20px;"/>
+                단가:<input type="text" id="Price1" name="Price" style="width:60px; height:20px; "/>
+                수량:<input type="text" id="Number1" name="Number" style="width:60px; height:20px; "/>
+                금액:<input type="text" id="Res1" name="Resl" readonly style="width:60px; height:20px;"/>
               </td>
             </tr>
           </table>
@@ -69,8 +103,9 @@
     <table width="400px">
       <tr>
         <td style="text-align:center">
+          총금액 :<input type="text" id="Total" name="Total" style="width:60px; height:30px; "/>
           <input type="button" value="확인" onclick="fChcek()"/>
-          <input type="reset" value="다시입력"/>
+          <input type="reset" value="다시입력" onclick="Reenter()"/>
           <input type="button" value="초기화" onclick="location.reload()"/>
         </td>
       </tr>
